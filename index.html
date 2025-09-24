@@ -105,7 +105,8 @@
         .hero {
             position: relative;
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('sage/4.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('sage/60.jpg') no-repeat center center/cover;
+            background-size: 100% 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -352,6 +353,15 @@
             flex-wrap: wrap;
         }
         /* Skills Section */
+        
+        .backg {
+            background: rgba(0, 0, 0, 0.7);
+            /* 0.7 = 70% opaque */
+            padding: 2px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 1px;
+        }
         
         .skills-container {
             display: grid;
@@ -884,8 +894,13 @@
         <div class="hero-content">
             <img src="sage/7.jpg" alt="Sage Agnew">
             <h1>SAGE AGNEW</h1>
-            <h2>UCT 3rd Year Construction Studies Student | Aspiring Construction Professional</h2>
-            <p>"Excellence is not a skill, it's an attitude."</p>
+            <a class="backg">
+                <h2><b>UCT 3rd Year Construction Studies Student | Aspiring Construction Professional</b></h2>
+            </a>
+            <a class="backg">
+                <p><b>"Excellence is not a skill, it's an attitude."</b>
+            </a>
+            </p>
             <a href="#cv" class="btn">View My CV</a>
         </div>
     </section>
