@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sage Agnew - Construction Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body,
+        html {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            color: #333;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+        /* Navigation */
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            padding: 12px 40px;
+        }
+        
+        nav .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #3498db;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #3498db;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+        /* Mobile menu button */
+        
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-btn:hover {
+            transform: scale(1.1);
+        }
+        /* Hero section */
+        
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('sage/4.jpg') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            margin-bottom: 25px;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        
+        .hero h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #3498db;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.6;
+            font-style: italic;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #3498db;
+            color: #3498db;
+        }
+        
+        .btn-outline:hover {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-in-progress {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        .btn-in-progress:hover {
+            background: #95a5a6;
+            transform: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        /* Sections */
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #2c3e50;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #3498db;
+            border-radius: 2px;
+        }
+        /* About Section */
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .about-img:hover {
+            transform: translateY(-5px);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-text {
+            flex: 2;
+        }
+        
+        .about-text h3 {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 17px;
+        }
+        /* CV Section */
+        
+        .cv-content {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .cv-summary {
+            flex: 1;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .cv-summary:hover {
+            transform: translateY(-5px);
+        }
+        
+        .cv-summary h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .cv-summary ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .cv-summary ul li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+        
+        .cv-summary ul li i {
+            color: #3498db;
+            margin-right: 12px;
+            font-size: 14px;
+        }
+        
+        .cv-download {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .download-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        /* Skills Section */
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .skill-category p {
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        /* Practical Training Section */
+        
+        .training-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .training-year {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .training-year:hover {
+            transform: translateY(-5px);
+        }
+        
+        .training-year h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .training-content {
+            margin-top: 25px;
+        }
+        
+        .training-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .training-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .training-item h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .in-progress {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .documents-list {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+        
+        .documents-list li {
+            margin-bottom: 8px;
+            list-style-type: disc;
+        }
+        
+        .documents-list a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .documents-list a:hover {
+            text-decoration: underline;
+        }
+        /* Gallery Section - Horizontal Scroll */
+        
+        .gallery {
+            background-color: #fff;
+        }
+        
+        .gallery-container {
+            overflow-x: auto;
+            padding: 20px 0;
+            cursor: grab;
+        }
+        
+        .gallery-container:active {
+            cursor: grabbing;
+        }
+        
+        .gallery-scroll {
+            display: flex;
+            gap: 25px;
+            padding: 0 20px;
+            min-width: max-content;
+        }
+        
+        .gallery-item {
+            position: relative;
+            min-width: 320px;
+            height: 280px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 25px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        /* Custom scrollbar for gallery */
+        
+        .gallery-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .gallery-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .gallery-container::-webkit-scrollbar-thumb {
+            background: #3498db;
+            border-radius: 4px;
+        }
+        
+        .gallery-container::-webkit-scrollbar-thumb:hover {
+            background: #2980b9;
+        }
+        /* Footer */
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-right: 25px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .footer-links a:hover {
+            color: #3498db;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        /* WhatsApp Button */
+        
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25d366;
+            color: #fff;
+            font-size: 28px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            animation: none;
+        }
+        /* Modal Styles */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            position: relative;
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 50px;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            animation: modalFade 0.4s ease;
+        }
+        
+        @keyframes modalFade {
+            from {
+                opacity: 0;
+                transform: translateY(-60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .modal-header h2 {
+            color: #2c3e50;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: #777;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-btn:hover {
+            color: #e74c3c;
+            background-color: #f9f9f9;
+        }
+        
+        .modal-body {
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        
+        .modal-body h3 {
+            color: #2c3e50;
+            margin: 25px 0 15px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .modal-body ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .modal-body li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 10px;
+        }
+        
+        .modal-body li::before {
+            content: '•';
+            color: #3498db;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .modal-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 992px) {
+            .about-content,
+            .cv-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .gallery-item {
+                min-width: 280px;
+                height: 240px;
+            }
+            .footer-content {
+                flex-direction: column;
+                gap: 25px;
+                text-align: center;
+            }
+            .footer-links {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                background: rgba(0, 0, 0, 0.95);
+                padding: 20px;
+                border-radius: 10px;
+                width: 200px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            }
+            nav ul.show {
+                display: flex;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero h2 {
+                font-size: 18px;
+            }
+            .hero img {
+                width: 150px;
+                height: 150px;
+            }
+            section {
+                padding: 80px 0;
+            }
+            .section-title h2 {
+                font-size: 30px;
+            }
+            .modal-content {
+                padding: 30px;
+                margin: 10% auto;
+                width: 95%;
+            }
+            .gallery-item {
+                min-width: 250px;
+                height: 200px;
+            }
+            .gallery-scroll {
+                padding: 0 15px;
+                gap: 20px;
+            }
+            .whatsapp-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            .hero img {
+                width: 120px;
+                height: 120px;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .gallery-item {
+                min-width: 220px;
+                height: 180px;
+            }
+            .modal-content {
+                padding: 20px;
+            }
+            .modal-header h2 {
+                font-size: 24px;
+            }
+            .whatsapp-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">SAGE AGNEW</div>
+        <div class="menu-btn"><i class="fas fa-bars"></i></div>
+        <ul>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#cv">CV</a></li>
+            <li><a href="#skills">Portfolio of Skills</a></li>
+            <li><a href="#training">Practical Training</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="sage/7.jpg" alt="Sage Agnew">
+            <h1>SAGE AGNEW</h1>
+            <h2>UCT 3rd Year Construction Studies Student | Aspiring Construction Professional</h2>
+            <p>"Excellence is not a skill, it's an attitude."</p>
+            <a href="#cv" class="btn">View My CV</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="sage/7.jpg" alt="Construction Site">
+                </div>
+                <div class="about-text">
+                    <h3>Motivated & Detail-Oriented Construction Professional</h3>
+                    <p>I am an ambitious and dedicated individual, currently in my third year at the University of Cape Town, pursuing a degree in Construction Studies—an area that truly ignites my passion. Complemented by a solid academic foundation, I
+                        bring a proactive mindset and a commitment to excellence.</p>
+                    <p>Through my practical training experiences with Feytcon and Concor Construction, I have developed a greater appreciation for entrepreneurship within the construction sector. I've had the opportunity to observe the entire construction
+                        process, from procurement to the finished product, and to understand how closely this is linked to professionalism.</p>
+                    <p>My experience spans various aspects of construction, from hands-on labor to project management principles. I am passionate about contributing to sustainable development in the built environment and aspire to become a project manager
+                        in the construction industry.</p>
+                    <a href="#training" class="btn btn-outline">View My Training Experience</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Section -->
+    <section id="cv" class="cv">
+        <div class="container">
+            <div class="section-title">
+                <h2>Curriculum Vitae</h2>
+            </div>
+            <div class="cv-content">
+                <div class="cv-summary">
+                    <h3>Education</h3>
+                    <p><strong>University of Cape Town</strong><br> BSc Construction Studies | 2023 - Present</p>
+                    <p><strong>Sonieke Highschool</strong><br> Matric Bachelors Pass | 2018 - 2021</p>
+
+                    <h3>Key Skills</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Project Management</li>
+                        <li><i class="fas fa-check"></i> Teamwork & Leadership</li>
+                        <li><i class="fas fa-check"></i> Critical Thinking</li>
+                        <li><i class="fas fa-check"></i> Time Management</li>
+                        <li><i class="fas fa-check"></i> SKETCH UP - 3D Modelling</li>
+                        <li><i class="fas fa-check"></i> Microsoft Excel</li>
+                    </ul>
+
+                    <h3>Professional Experience</h3>
+                    <ul>
+                        <li><i class="fas fa-briefcase"></i> Feytcon - Paving and Building | General Laborer/Foreman (Jan 2025)</li>
+                        <li><i class="fas fa-briefcase"></i> Concor Construction (Pty) Ltd | Intern-Practical Training (July 2024)</li>
+                        <li><i class="fas fa-briefcase"></i> Student Front Desk Assistant - UCT | (Feb 2025 - Present)</li>
+                    </ul>
+
+                    <h3>Languages</h3>
+                    <ul>
+                        <li><i class="fas fa-language"></i> English: Fluent</li>
+                        <li><i class="fas fa-language"></i> Afrikaans: Fluent</li>
+                    </ul>
+
+                    <div class="cv-download">
+                        <div class="download-buttons">
+                            <a href="Sage Agnew CV 2025 (2).pdf" class="btn" download>Download CV (PDF)</a>
+                            <a href="Feytcon Report CON1007X.pdf" class="btn btn-outline" download>Download Project Report</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Portfolio of Skills</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Graduate Attributes</h3>
+                    <p>Intrinsic values and competencies of CEM graduates that emphasize ethical judgment, professionalism, and environmental awareness.</p>
+                    <button class="btn btn-outline" onclick="openModal('modal-attributes')">View Graduate Attributes</button>
+                </div>
+                <div class="skill-category">
+                    <h3>Degree Programme Outcomes</h3>
+                    <p>Comprehensive skills and knowledge acquired through the BSc Construction Studies program at UCT.</p>
+                    <button class="btn btn-outline" onclick="openModal('modal-degree')">View Degree Outcomes</button>
+                </div>
+                <div class="skill-category">
+                    <h3>Practical Training</h3>
+                    <p>Hands-on experience and industry exposure gained through structured practical training requirements.</p>
+                    <button class="btn btn-outline" onclick="openModal('modal-practical')">View Training Info</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practical Training Section -->
+    <section id="training" class="training">
+        <div class="container">
+            <div class="section-title">
+                <h2>Practical Training</h2>
+            </div>
+            <div class="training-container">
+                <div class="training-year">
+                    <h3>Year 1</h3>
+                    <p>CON1007X</p>
+                    <div class="training-content">
+                        <div class="training-item">
+                            <h4>Feytcon - Paving and Building</h4>
+                            <p>Detailed report on first-year practical training experience with Feytcon, focusing on paving, earthworks, and construction management.</p>
+                            <button class="btn btn-outline" onclick="openModal('modal-year1')">View Details</button>
+                        </div>
+                        <div class="training-item">
+                            <h4>Key Learnings</h4>
+                            <p>Hands-on experience in paving installation, bricklaying, grouting, and adhering to SANS 1200DA standards for earthworks.</p>
+                        </div>
+                        <div class="training-item">
+                            <h4>Project Management Exposure</h4>
+                            <p>Observed client consultations, cost estimation through "time and motion" principles, and multi-stakeholder project coordination.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-year">
+                    <h3>Year 2</h3>
+                    <p>CON2005X</p>
+                    <div class="training-content">
+                        <div class="training-item">
+                            <h4>Concor Construction (Pty) Ltd</h4>
+                            <p>Comprehensive report on second-year practical training experience with Concor Construction.</p>
+                            <button class="btn btn-outline" onclick="openModal('modal-year2')">View Details</button>
+                        </div>
+                        <div class="training-item">
+                            <h4>Key Learnings</h4>
+                            <p>Engaged in practical training, gaining exposure to various construction technologies including both in situ and precast construction processes.</p>
+                        </div>
+                        <div class="training-item">
+                            <h4>Industry Exposure</h4>
+                            <p>Participated in meaningful conversations with key stakeholders and gained hands-on experience in large-scale construction projects.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-year">
+                    <h3>Year 3 <span class="in-progress">(In Progress)</span></h3>
+                    <p>CON3023X</p>
+                    <div class="training-content">
+                        <div class="training-item">
+                            <h4>Upcoming Practical Training</h4>
+                            <p>Third-year practical training focusing on advanced construction management principles and project leadership.</p>
+                            <button class="btn btn-in-progress">Training In Progress</button>
+                        </div>
+                        <div class="training-item">
+                            <h4>Expected Outcomes</h4>
+                            <p>Advanced project management skills, leadership development, and strategic decision-making in construction contexts.</p>
+                        </div>
+                        <div class="training-item">
+                            <h4>Focus Areas</h4>
+                            <p>Project scheduling, budgeting, team coordination, and client relationship management at a senior level.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section - Horizontal Scroll -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Gallery</h2>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-scroll">
+                    <div class="gallery-item">
+                        <img src="sage/1.jpg" alt="Construction Site Management">
+                        <div class="gallery-overlay">
+                            <h4>Construction Site Management</h4>
+                            <p>Site supervision and coordination at Feytcon projects</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/2.jpg" alt="Construction Project Planning">
+                        <div class="gallery-overlay">
+                            <h4>Project Planning</h4>
+                            <p>Strategic planning and execution at residential sites</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/3.jpg" alt="Architecture and Design">
+                        <div class="gallery-overlay">
+                            <h4>Building Design</h4>
+                            <p>Architectural planning and design principles</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/4.jpg" alt="Construction Team">
+                        <div class="gallery-overlay">
+                            <h4>Team Leadership</h4>
+                            <p>Leading construction teams on site</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/5.jpg" alt="Construction Tools">
+                        <div class="gallery-overlay">
+                            <h4>Technical Skills</h4>
+                            <p>Equipment and tool management expertise</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/6.jpg" alt="Modern Building">
+                        <div class="gallery-overlay">
+                            <h4>Modern Construction</h4>
+                            <p>Contemporary building techniques and materials</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/7.jpg" alt="Construction Safety">
+                        <div class="gallery-overlay">
+                            <h4>Safety Management</h4>
+                            <p>Health and safety protocols implementation</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/8.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/9.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/10.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/11.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/12.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/13.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/14.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/15.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/16.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/17.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/18.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/19.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/20.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/21.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/22.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/23.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/24.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="sage/25.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/26.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/27.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/28.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/29.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/29.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/30.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/31.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="sage/32.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/33.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/34.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="sage/35.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/36.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="sage/37.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/38.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/39.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/40.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/41.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/42.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="sage/43.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/44.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="sage/45.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/46.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/47.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/48.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/49.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/50.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/51.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/52.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="sage/53.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/54.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sage/55.jpg" alt="Urban Development">
+                        <div class="gallery-overlay">
+                            <h4>Urban Development</h4>
+                            <p>City planning and sustainable development</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">SAGE AGNEW</div>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#cv">CV</a></li>
+                    <li><a href="#skills">Portfolio of Skills</a></li>
+                    <li><a href="#training">Practical Training</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+            </div>
+            <div class="copyright">
+                <p>E-PORTFOLIO: SAGE AGNEW | EST. 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/+27638710442" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Modal for Graduate Attributes -->
+    <div id="modal-attributes" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>GRADUATE ATTRIBUTES</h2>
+                <button class="close-btn" onclick="closeModal('modal-attributes')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>The Department of Construction Economics and Management at the University of Cape Town strives to produce CEM graduates who ascribe to the following intrinsic values and competencies:</p>
+
+                <ul>
+                    <li>Ethical judgment and professional integrity</li>
+                    <li>Professionalism in all that they do</li>
+                    <li>Environmental awareness and sustainable practices</li>
+                    <li>An understanding of social norms relevant to their profession</li>
+                    <li>Critical Inquiry in respect of the construction and property industry</li>
+                    <li>Technical knowledge and competency in construction management</li>
+                    <li>Industrial knowledge and understanding of market dynamics</li>
+                    <li>The impact of professional practice on social responsibility, social justice and social norms</li>
+                </ul>
+
+                <p>These attributes ensure that graduates are not only technically competent but also socially responsible professionals who contribute positively to the built environment.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('modal-attributes')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Degree Programme Outcomes -->
+    <div id="modal-degree" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>DEGREE PROGRAMME OUTCOMES</h2>
+                <button class="close-btn" onclick="closeModal('modal-degree')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>BSc Construction Studies Degree Outcomes</h3>
+
+                <p>The curriculum of the 3-year BSc in Construction Studies programme equips graduates to:</p>
+
+                <ul>
+                    <li>Use computer packages for computer-aided draughting presentation, scheduling and information processing</li>
+                    <li>Manage and prepare tender and contractual documents relating to building work</li>
+                    <li>Estimate cost and undertake financial management of construction projects</li>
+                    <li>Manage the construction of buildings and related infrastructure</li>
+                    <li>Manage the human resources within a construction firm</li>
+                    <li>Understand and evaluate economic issues concerning the construction sector and the construction firm at both a micro and macro level</li>
+                    <li>Understand the time value of money and apply discounted cash flow techniques for evaluating alternative property investments</li>
+                    <li>Communicate with construction professionals concerning spatial concepts, financial issues and construction assembly problems</li>
+                </ul>
+
+                <p>The aims of the programme are:</p>
+
+                <ul>
+                    <li>To provide employable management graduates to the construction industry</li>
+                    <li>To fully satisfy the criteria for accreditation in terms of the requirements of the Chartered Institute of Building (CIOB), the South African Council for the Project and Construction Management Professions (SACPCMP), the Royal Institution
+                        of Chartered Surveyors (RICS), and the South African Council for the Quantity Surveying Profession (SACOSP)</li>
+                </ul>
+
+                <p><em>Source: EBE Undergraduate Handbook, 2023</em></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('modal-degree')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Practical Training -->
+    <div id="modal-practical" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>PRACTICAL TRAINING</h2>
+                <button class="close-btn" onclick="closeModal('modal-practical')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Aim</h3>
+                <p>To supplement theoretical learning with practical exposure to work situations in the built environment, enabling students to apply academic knowledge in real-world contexts.</p>
+
+                <h3>Outcome</h3>
+                <p>After completing this module the student should be able to demonstrate new skills acquired in the workplace and reflect on the integration of academic learning with practical application.</p>
+
+                <h3>Assessment</h3>
+                <p>Students are required to submit a written report in accordance with the guidelines set out by the Department, which is endorsed by their employer/s, on the nature and duration of the experience obtained in the workplace. The report should
+                    demonstrate critical reflection on the learning experience.</p>
+
+                <p><em>Source: CEM [Departmental Handbook] COM/03SX</em></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('modal-practical')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Year 1 Training -->
+    <div id="modal-year1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>YEAR 1 PRACTICAL TRAINING - CON1007X</h2>
+                <button class="close-btn" onclick="closeModal('modal-year1')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Training Overview</h3>
+                <p>From January 7th to January 28th, 2025, I completed 161.5 hours of practical training with Feytcon, a building and paving company based in Kuils River. This experience provided comprehensive exposure to various aspects of construction
+                    management and hands-on work.</p>
+
+                <h3>Key Responsibilities</h3>
+                <ul>
+                    <li>Assisted in the coordination and execution of on-site construction activities</li>
+                    <li>Collaborated with site supervisors and workers to maintain a safe and organized work environment</li>
+                    <li>Supported material handling and inventory management</li>
+                    <li>Gained experience in paving installation, bricklaying, and grouting</li>
+                    <li>Adhered to SANS 1200DA standards for earthworks</li>
+                </ul>
+
+                <h3>Projects and Sites</h3>
+                <ul>
+                    <li>Residential paving projects in Kuils River and Kraaifontein</li>
+                    <li>Commercial development at Paardevlei, Somerset West</li>
+                    <li>Kingdom Hall project in Roundhay</li>
+                    <li>Staircase construction at Zevenwacht Estate</li>
+                </ul>
+
+                <h3>Key Learnings</h3>
+                <ul>
+                    <li>Project management principles and "time and motion" costing</li>
+                    <li>Client relations and professional communication</li>
+                    <li>Team leadership and supervision skills</li>
+                    <li>Technical skills in paving, bricklaying, and construction techniques</li>
+                </ul>
+
+                <h3>Attached Documents</h3>
+                <ul class="documents-list">
+                    <li><a href="Feytcon Report CON1007X.pdf" download>Feytcon Practical Training Report (PDF)</a></li>
+                    <li><a href="employer-confirmation-year1.pdf" download>Employer Confirmation Letter (PDF)</a></li>
+                    <li><a href="logbook-year1.pdf" download>Training Logbook (PDF)</a></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('modal-year1')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Year 2 Training -->
+    <div id="modal-year2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>YEAR 2 PRACTICAL TRAINING - CON2005X</h2>
+                <button class="close-btn" onclick="closeModal('modal-year2')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Training Overview</h3>
+                <p>During July 2024, I completed my second-year practical training with Concor Construction (Pty) Ltd, one of South Africa's leading construction companies. This experience provided exposure to large-scale construction projects and advanced
+                    construction technologies.</p>
+
+                <h3>Key Responsibilities</h3>
+                <ul>
+                    <li>Participated in both in situ and precast construction processes</li>
+                    <li>Engaged with key stakeholders on major construction projects</li>
+                    <li>Assisted with site documentation and progress reporting</li>
+                    <li>Observed quality control procedures and safety protocols</li>
+                    <li>Gained insights into project scheduling and resource management</li>
+                </ul>
+
+                <h3>Projects and Sites</h3>
+                <ul>
+                    <li>Concor Conradie Park development project</li>
+                    <li>Mfuleni sports field fencing installation</li>
+                    <li>Various residential and commercial construction sites</li>
+                </ul>
+
+                <h3>Key Learnings</h3>
+                <ul>
+                    <li>Advanced construction technologies and methodologies</li>
+                    <li>Stakeholder management and professional communication</li>
+                    <li>Quality assurance processes in large-scale construction</li>
+                    <li>Site safety management and compliance procedures</li>
+                </ul>
+
+                <h3>Attached Documents</h3>
+                <ul class="documents-list">
+                    <li><a href="concor-report-year2.pdf" download>Concor Construction Practical Training Report (PDF)</a></li>
+                    <li><a href="employer-confirmation-year2.pdf" download>Employer Confirmation Letter (PDF)</a></li>
+                    <li><a href="site-safety-certificate.pdf" download>Site Safety Training Certificate (PDF)</a></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('modal-year2')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples/dist/jquery.ripples.min.js"></script>
+    <script>
+        // Water ripple effect - ONLY on hero section
+        $(document).ready(function() {
+            $('.hero').ripples({
+                resolution: 512,
+                dropRadius: 20,
+                perturbance: 0.04,
+            });
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('nav ul');
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+            menuBtn.querySelector('i').classList.toggle('fa-times');
+            menuBtn.querySelector('i').classList.toggle('fa-bars');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+
+            // Active navigation link highlighting
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('show');
+                menuBtn.querySelector('i').classList.remove('fa-times');
+                menuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.getElementsByClassName('modal');
+                for (let i = 0; i < modals.length; i++) {
+                    if (modals[i].style.display === 'block') {
+                        modals[i].style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
