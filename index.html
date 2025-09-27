@@ -106,7 +106,6 @@
             position: relative;
             height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('sage/60.jpg') no-repeat center center/cover;
-            background-size: 100% 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -473,37 +472,32 @@
         .documents-list a:hover {
             text-decoration: underline;
         }
-        /* Gallery Section - Horizontal Scroll */
+        /* Gallery Section - Responsive Grid/Horizontal Scroll */
         
         .gallery {
             background-color: #fff;
         }
         
         .gallery-container {
-            overflow-x: auto;
-            padding: 20px 0;
-            cursor: grab;
+            width: 100%;
+            overflow: hidden;
         }
+        /* Grid layout for larger screens */
         
-        .gallery-container:active {
-            cursor: grabbing;
-        }
-        
-        .gallery-scroll {
-            display: flex;
-            gap: 25px;
-            padding: 0 20px;
-            min-width: max-content;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 0;
         }
         
         .gallery-item {
             position: relative;
-            min-width: 320px;
-            height: 280px;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            aspect-ratio: 4/3;
         }
         
         .gallery-item:hover {
@@ -529,7 +523,7 @@
             right: 0;
             background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
             color: white;
-            padding: 25px;
+            padding: 20px;
             transform: translateY(100%);
             transition: transform 0.4s ease;
         }
@@ -543,24 +537,114 @@
             margin-bottom: 8px;
             font-weight: 600;
         }
-        /* Custom scrollbar for gallery */
+        /* Horizontal scroll for smaller screens */
         
-        .gallery-container::-webkit-scrollbar {
+        .gallery-scroll {
+            display: none;
+            overflow-x: auto;
+            padding: 20px 0;
+            cursor: grab;
+            scrollbar-width: thin;
+            scrollbar-color: #3498db #f1f1f1;
+        }
+        
+        .gallery-scroll:active {
+            cursor: grabbing;
+        }
+        
+        .gallery-scroll-inner {
+            display: flex;
+            gap: 15px;
+            padding: 0 15px;
+            min-width: max-content;
+        }
+        
+        .gallery-scroll-item {
+            flex: 0 0 auto;
+            width: 280px;
+            height: 210px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .gallery-scroll-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-scroll-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 15px;
+        }
+        
+        .gallery-scroll-overlay h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .gallery-scroll-overlay p {
+            font-size: 14px;
+        }
+        /* Custom scrollbar for gallery scroll */
+        
+        .gallery-scroll::-webkit-scrollbar {
             height: 8px;
         }
         
-        .gallery-container::-webkit-scrollbar-track {
+        .gallery-scroll::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 4px;
         }
         
-        .gallery-container::-webkit-scrollbar-thumb {
+        .gallery-scroll::-webkit-scrollbar-thumb {
             background: #3498db;
             border-radius: 4px;
         }
         
-        .gallery-container::-webkit-scrollbar-thumb:hover {
+        .gallery-scroll::-webkit-scrollbar-thumb:hover {
             background: #2980b9;
+        }
+        /* Gallery navigation controls */
+        
+        .gallery-controls {
+            display: none;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 15px;
+        }
+        
+        .gallery-nav-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-nav-btn:hover {
+            background: #2980b9;
+            transform: scale(1.1);
+        }
+        
+        .gallery-nav-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
         }
         /* Footer */
         
@@ -762,15 +846,20 @@
         }
         /* Responsive Design */
         
+        @media (max-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+        
         @media (max-width: 992px) {
             .about-content,
             .cv-content {
                 flex-direction: column;
                 gap: 40px;
             }
-            .gallery-item {
-                min-width: 280px;
-                height: 240px;
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
             .footer-content {
                 flex-direction: column;
@@ -826,20 +915,15 @@
                 margin: 10% auto;
                 width: 95%;
             }
-            .gallery-item {
-                min-width: 250px;
-                height: 200px;
+            /* Switch to horizontal scroll on mobile */
+            .gallery-grid {
+                display: none;
             }
             .gallery-scroll {
-                padding: 0 15px;
-                gap: 20px;
+                display: block;
             }
-            .whatsapp-btn {
-                width: 55px;
-                height: 55px;
-                font-size: 24px;
-                bottom: 20px;
-                right: 20px;
+            .gallery-controls {
+                display: flex;
             }
         }
         
@@ -854,9 +938,9 @@
             section {
                 padding: 60px 0;
             }
-            .gallery-item {
-                min-width: 220px;
-                height: 180px;
+            .gallery-scroll-item {
+                width: 250px;
+                height: 188px;
             }
             .modal-content {
                 padding: 20px;
@@ -892,7 +976,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <img src="sage/7.jpg" alt="Sage Agnew">
+            <img src="sage/head.jpg" alt="Sage Agnew">
             <h1>SAGE AGNEW</h1>
             <a class="backg">
                 <h2><b>UCT 3rd Year Construction Studies Student | Aspiring Construction Professional</b></h2>
@@ -913,14 +997,14 @@
             </div>
             <div class="about-content">
                 <div class="about-img">
-                    <img src="sage/7.jpg" alt="Construction Site">
+                    <img src="sage/about.jpg" alt="Construction Site">
                 </div>
                 <div class="about-text">
                     <h3>Motivated & Detail-Oriented Construction Professional</h3>
                     <p>I am an ambitious and dedicated individual, currently in my third year at the University of Cape Town, pursuing a degree in Construction Studies—an area that truly ignites my passion. Complemented by a solid academic foundation, I
                         bring a proactive mindset and a commitment to excellence.</p>
-                    <p>Through my practical training experiences with Feytcon and Concor Construction, I have developed a greater appreciation for entrepreneurship within the construction sector. I've had the opportunity to observe the entire construction
-                        process, from procurement to the finished product, and to understand how closely this is linked to professionalism.</p>
+                    <p>Through my practical training experiences with Feytcon and Haws & Inglis Civil Engineering, I have developed a greater appreciation for entrepreneurship within the construction sector. I've had the opportunity to observe the entire
+                        construction process, from procurement to the finished product, and to understand how closely this is linked to professionalism.</p>
                     <p>My experience spans various aspects of construction, from hands-on labor to project management principles. I am passionate about contributing to sustainable development in the built environment and aspire to become a project manager
                         in the construction industry.</p>
                     <a href="#training" class="btn btn-outline">View My Training Experience</a>
@@ -953,9 +1037,10 @@
 
                     <h3>Professional Experience</h3>
                     <ul>
+                        <li><i class="fas fa-briefcase"></i> H&I Construction | Intern-Practical Training (April 2025 - Present)</li>
+                        <li><i class="fas fa-briefcase"></i> Student Front Desk Assistant - UCT | (Feb 2025 - Present)</li>
                         <li><i class="fas fa-briefcase"></i> Feytcon - Paving and Building | General Laborer/Foreman (Jan 2025)</li>
                         <li><i class="fas fa-briefcase"></i> Concor Construction (Pty) Ltd | Intern-Practical Training (July 2024)</li>
-                        <li><i class="fas fa-briefcase"></i> Student Front Desk Assistant - UCT | (Feb 2025 - Present)</li>
                     </ul>
 
                     <h3>Languages</h3>
@@ -967,7 +1052,6 @@
                     <div class="cv-download">
                         <div class="download-buttons">
                             <a href="Sage Agnew CV 2025 (2).pdf" class="btn" download>Download CV (PDF)</a>
-                            <a href="Feytcon Report CON1007X.pdf" class="btn btn-outline" download>Download Project Report</a>
                         </div>
                     </div>
                 </div>
@@ -1069,14 +1153,16 @@
         </div>
     </section>
 
-    <!-- Gallery Section - Horizontal Scroll -->
+    <!-- Gallery Section - Responsive -->
     <section id="gallery" class="gallery">
         <div class="container">
             <div class="section-title">
                 <h2>My Gallery</h2>
             </div>
             <div class="gallery-container">
-                <div class="gallery-scroll">
+                <!-- Grid layout for larger screens -->
+                <div class="gallery-grid">
+                    <!-- Images 1-55 would go here with the same structure as before -->
                     <div class="gallery-item">
                         <img src="sage/1.jpg" alt="Construction Site Management">
                         <div class="gallery-overlay">
@@ -1098,20 +1184,7 @@
                             <p>Architectural planning and design principles</p>
                         </div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="sage/4.jpg" alt="Construction Team">
-                        <div class="gallery-overlay">
-                            <h4>Team Leadership</h4>
-                            <p>Leading construction teams on site</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="sage/5.jpg" alt="Construction Tools">
-                        <div class="gallery-overlay">
-                            <h4>Technical Skills</h4>
-                            <p>Equipment and tool management expertise</p>
-                        </div>
-                    </div>
+                    <!-- Add more gallery items as needed -->
                     <div class="gallery-item">
                         <img src="sage/6.jpg" alt="Modern Building">
                         <div class="gallery-overlay">
@@ -1477,6 +1550,45 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Horizontal scroll layout for mobile -->
+                <div class="gallery-scroll">
+                    <div class="gallery-scroll-inner">
+                        <!-- Images 1-55 would go here -->
+                        <div class="gallery-scroll-item">
+                            <img src="sage/1.jpg" alt="Construction Site Management">
+                            <div class="gallery-scroll-overlay">
+                                <h4>Construction Site Management</h4>
+                                <p>Site supervision and coordination at Feytcon projects</p>
+                            </div>
+                        </div>
+                        <div class="gallery-scroll-item">
+                            <img src="sage/2.jpg" alt="Construction Project Planning">
+                            <div class="gallery-scroll-overlay">
+                                <h4>Project Planning</h4>
+                                <p>Strategic planning and execution at residential sites</p>
+                            </div>
+                        </div>
+                        <div class="gallery-scroll-item">
+                            <img src="sage/3.jpg" alt="Architecture and Design">
+                            <div class="gallery-scroll-overlay">
+                                <h4>Building Design</h4>
+                                <p>Architectural planning and design principles</p>
+                            </div>
+                        </div>
+                        <!-- Add more gallery scroll items as needed -->
+                    </div>
+                </div>
+
+                <!-- Navigation controls for mobile gallery -->
+                <div class="gallery-controls">
+                    <button class="gallery-nav-btn" id="gallery-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="gallery-nav-btn" id="gallery-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -1710,6 +1822,9 @@
                 dropRadius: 20,
                 perturbance: 0.04,
             });
+
+            // Initialize gallery navigation for mobile
+            initGalleryNavigation();
         });
 
         // Mobile menu toggle
@@ -1812,6 +1927,51 @@
                 }
             });
         });
+
+        // Gallery navigation for mobile
+        function initGalleryNavigation() {
+            const galleryScroll = document.querySelector('.gallery-scroll-inner');
+            const prevBtn = document.getElementById('gallery-prev');
+            const nextBtn = document.getElementById('gallery-next');
+
+            if (!galleryScroll || !prevBtn || !nextBtn) return;
+
+            const scrollAmount = 300;
+
+            prevBtn.addEventListener('click', () => {
+                galleryScroll.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                galleryScroll.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Update button states based on scroll position
+            galleryScroll.addEventListener('scroll', () => {
+                const maxScrollLeft = galleryScroll.scrollWidth - galleryScroll.clientWidth;
+
+                if (galleryScroll.scrollLeft <= 0) {
+                    prevBtn.disabled = true;
+                } else {
+                    prevBtn.disabled = false;
+                }
+
+                if (galleryScroll.scrollLeft >= maxScrollLeft) {
+                    nextBtn.disabled = true;
+                } else {
+                    nextBtn.disabled = false;
+                }
+            });
+
+            // Initialize button states
+            galleryScroll.dispatchEvent(new Event('scroll'));
+        }
     </script>
 
 </body>
