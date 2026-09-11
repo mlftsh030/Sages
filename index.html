@@ -105,7 +105,7 @@
         .hero {
             position: relative;
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('sage/60.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('sage/front.jpg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -384,10 +384,11 @@
         .backg {
             background: rgba(0, 0, 0, 0.7);
             /* 0.7 = 70% opaque */
-            padding: 2px;
+            padding: 8px 16px;
             border-radius: 5px;
             display: inline-block;
-            margin-bottom: 1px;
+            margin-bottom: 10px;
+            max-width: 100%;
         }
         
         .skills-container {
@@ -849,6 +850,7 @@
         .modal-body ul {
             margin-left: 20px;
             margin-bottom: 20px;
+            list-style: none;
         }
         
         .modal-body li {
@@ -959,6 +961,12 @@
             .hero h1 {
                 font-size: 28px;
             }
+            .hero h2 {
+                font-size: 15px;
+            }
+            .hero p {
+                font-size: 15px;
+            }
             .hero img {
                 width: 120px;
                 height: 120px;
@@ -998,7 +1006,7 @@
             <li><a href="#skills">Portfolio of Skills</a></li>
             <li><a href="#training">Practical Training</a></li>
             <li><a href="#gallery">Gallery</a></li>
-            <li><a href="Decleration.pdf">Decleration</a></li>
+            <li><a href="Decleration.pdf">Declaration</a></li>
         </ul>
     </nav>
 
@@ -1007,15 +1015,14 @@
         <div class="hero-content">
             <img src="sage/head.jpg" alt="Sage Agnew">
             <h1>SAGE AGNEW</h1>
-            <a class="backg">
-                <h2><b>UCT 3rd Year Construction Studies Student | Aspiring Construction Professional</b></h2>
-            </a>
-            <a class="backg">
-                <p><b>"Know a little about a lot"</b>
-            </a>
-            </p>
-            <a href="CV.pdf" class="btn">View My CV</a>
+            <span class="backg">
+                <h2><b>UCT Final Year Construction Studies Student | Aspiring Construction Professional</b></h2>
+            </span>
+            <span class="backg">
+                <p><b>"Know a little about a lot"</b></p>
+            </span>
         </div>
+         <a href="CV.pdf" class="btn" style="margin-top: 40px;">View My CV</a>
     </section>
 
     <!-- About Section -->
@@ -1030,12 +1037,12 @@
                 </div>
                 <div class="about-text">
                     <h3>Motivated & Detail-Oriented Construction Professional</h3>
-                    <p>Hy there, I’m Sage Agnew. I am an ambitious and dedicated individual, currently in my third year at the University of Cape Town, pursuing a degree in Construction Studies—an area that truly ignites my passion. Complemented by a solid
+                    <p>Hi there, I’m Sage Agnew. I am an ambitious and dedicated individual, currently in my final year at the University of Cape Town, pursuing a degree in Construction Studies—an area that truly ignites my passion. Complemented by a solid
                         academic foundation, I bring a proactive mindset and a commitment to excellence.</p>
-                    <p>Through my practical training experiences with Feytcon and Haws & Inglis Civil Engineering, I have developed a greater appreciation for entrepreneurship within the construction sector. I've had the opportunity to observe the entire
+                    <p>Through my practical training experiences with Feytcon and H&I Construction, I have developed a greater appreciation for entrepreneurship within the construction sector. I've had the opportunity to observe the entire
                         construction process, from procurement to the finished product, and to understand how closely this is linked to professionalism.</p>
-                    <p>My experience spans various aspects of construction, from hands-on labor to project management principles. I am passionate about contributing to sustainable development in the built environment and aspire to become a project manager
-                        in the construction industry.</p>
+                    <p>My experience spans various aspects of construction, from hands-on labour to quantity surveying and contract administration. Over more than 400 hours of industry training I have worked on quantity measurement, subcontractor claims, concrete
+                        reconciliations, procurement and construction documentation. I am passionate about contributing to sustainable development in the built environment and aspire to become a project manager in the construction industry.</p>
                     <a href="#training" class="btn btn-outline">View My Training Experience</a>
                 </div>
             </div>
@@ -1051,7 +1058,7 @@
             <div class="cv-content">
                 <div class="cv-summary">
                     <h3>Education</h3>
-                    <p><strong>University of Cape Town</strong><br> BSc Construction Studies | 2023 - Present</p>
+                    <p><strong>University of Cape Town</strong><br> BSc Construction Studies | 2023 - 2026 (Expected Graduation)</p>
                     <p><strong>Sonieke Highschool</strong><br> Matric Bachelors Pass | 2018 - 2021</p>
 
                     <h3>Key Skills</h3>
@@ -1060,16 +1067,29 @@
                         <li><i class="fas fa-check"></i> Teamwork & Leadership</li>
                         <li><i class="fas fa-check"></i> Critical Thinking</li>
                         <li><i class="fas fa-check"></i> Time Management</li>
+                        <li><i class="fas fa-check"></i> Quantity Measurement & BOQ Review</li>
+                        <li><i class="fas fa-check"></i> Contract & Document Administration</li>
                         <li><i class="fas fa-check"></i> SKETCH UP - 3D Modelling</li>
-                        <li><i class="fas fa-check"></i> Microsoft Excel</li>
+                        <li><i class="fas fa-check"></i> MethVin Digital Measurement Software</li>
+                        <li><i class="fas fa-check"></i> Microsoft Excel, Word & PowerPoint</li>
+                        <li><i class="fas fa-check"></i> First Aid & Safety Compliance N1</li>
                     </ul>
 
                     <h3>Professional Experience</h3>
                     <ul>
-                        <li><i class="fas fa-briefcase"></i> H&I Construction | Intern-Practical Training (April 2025 - Present)</li>
-                        <li><i class="fas fa-briefcase"></i> Student Front Desk Assistant - UCT | (Feb 2025 - Present)</li>
+                        <li><i class="fas fa-briefcase"></i> H&I Construction | Quantity Surveying Practical Trainee (June 2025 - June 2026)</li>
+                        <li><i class="fas fa-briefcase"></i> Student Front Desk Assistant - UCT, College House | (Feb 2025 - Nov 2025)</li>
                         <li><i class="fas fa-briefcase"></i> Feytcon - Paving and Building | General Laborer/Foreman (Jan 2025)</li>
                         <li><i class="fas fa-briefcase"></i> Concor Construction (Pty) Ltd | Intern-Practical Training (July 2024)</li>
+                        <li><i class="fas fa-briefcase"></i> Bluemoon Projects NPC | Volunteer, Do It Days (July 2024)</li>
+                    </ul>
+
+                    <h3>Extracurricular & Community</h3>
+                    <ul>
+                        <li><i class="fas fa-users"></i> Media and Events Coordinator - UCT CIOB Society (2025 - 2026)</li>
+                        <li><i class="fas fa-users"></i> Chairperson - UCT Food Representatives (2024)</li>
+                        <li><i class="fas fa-users"></i> House Committee Food Representative - College House Residence (2024)</li>
+                        <li><i class="fas fa-hands-helping"></i> <a href="Sage_Agnew_Volunteer_Work.pdf" download>Volunteer Work Certificate - Bluemoon Projects NPC (PDF)</a></li>
                     </ul>
 
                     <h3>Languages</h3>
@@ -1141,13 +1161,13 @@
                     </div>
                 </div>
                 <div class="training-year">
-                    <h3>Year 2 <span class="in-progress">(In Progress)</span></h3>
+                    <h3>Year 2</h3>
                     <p>CON2005X</p>
                     <div class="training-content">
                         <div class="training-item">
                             <h4>Concor Construction (Pty) Ltd</h4>
                             <p>Comprehensive report on second-year practical training experience with Concor Construction.</p>
-                            <button class="btn btn-in-progress">Training In Progress</button>
+                            <button class="btn btn-outline" onclick="openModal('modal-year2')">View Details</button>
                         </div>
                         <div class="training-item">
                             <h4>Key Learnings</h4>
@@ -1160,21 +1180,21 @@
                     </div>
                 </div>
                 <div class="training-year">
-                    <h3>Year 3 <span class="in-progress">(In Progress)</span></h3>
-                    <p>CON3023X</p>
+                    <h3>Year 3</h3>
+                    <p>CON2013X</p>
                     <div class="training-content">
                         <div class="training-item">
-                            <h4>Upcoming Practical Training</h4>
-                            <p>Third-year practical training focusing on advanced construction management principles and project leadership.</p>
-                            <button class="btn btn-in-progress">Training In Progress</button>
+                            <h4>H&I Construction (Pty) Ltd</h4>
+                            <p>229 hours of supervised training with a project management team administering City of Cape Town maintenance and infrastructure contracts under the 34Q and 144Q term tenders.</p>
+                            <button class="btn btn-outline" onclick="openModal('modal-year3')">View Details</button>
                         </div>
                         <div class="training-item">
-                            <h4>Expected Outcomes</h4>
-                            <p>Advanced project management skills, leadership development, and strategic decision-making in construction contexts.</p>
+                            <h4>Key Learnings</h4>
+                            <p>Contract administration, quantity surveying support, procurement and document control, plus quantity take-offs using MethVin measurement software.</p>
                         </div>
                         <div class="training-item">
-                            <h4>Focus Areas</h4>
-                            <p>Project scheduling, budgeting, team coordination, and client relationship management at a senior level.</p>
+                            <h4>Site Inspections</h4>
+                            <p>Attended defect inspections and a practical completion meeting at Philippi East Fresh Produce Market, Wallacedene and Belroad Fire Station under the JBCC contract.</p>
                         </div>
                     </div>
                 </div>
@@ -2039,7 +2059,7 @@
                 <ul class="documents-list">
                     <li><a href="Feytcon_Report_CON1007X.pdf" download>Feytcon Practical Training Report (PDF)</a></li>
                     <li><a href="Sage_Migael_Agnew_000178.pdf" download>Employer Confirmation Letter (PDF)</a></li>
-                    <li><a href="Logbooks.xlsx" download>Training Logbook (PDF)</a></li>
+                    <li><a href="Logbooks.xlsx" download>Training Logbook (XLSX)</a></li>
                 </ul>
             </div>
             <div class="modal-footer">
@@ -2052,7 +2072,7 @@
     <div id="modal-year2" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>YEAR 2 PRACTICAL TRAINING - CON2005X</h2>
+                <h2>YEAR 2 PRACTICAL TRAINING - CON2013X</h2>
                 <button class="close-btn" onclick="closeModal('modal-year2')">&times;</button>
             </div>
             <div class="modal-body">
@@ -2093,6 +2113,59 @@
             </div>
             <div class="modal-footer">
                 <button class="btn" onclick="closeModal('modal-year2')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Year 3 Practical Training Modal -->
+    <div id="modal-year3" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>YEAR 3 PRACTICAL TRAINING - CON3023X</h2>
+                <button class="close-btn" onclick="closeModal('modal-year3')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Training Overview</h3>
+                <p>Between 23 June 2025 and 10 June 2026 I completed 229 hours of supervised practical training with H&I Construction (Pty) Ltd, a multi-disciplinary South African construction company operating nationally since 1984. My placement was
+                    within a project management team responsible for administering City of Cape Town maintenance and infrastructure contracts under the 34Q and 144Q term tenders. The training was conducted at Tygerberg Site Camp 2 and later at H&I's
+                    Durbanville Head Office.</p>
+
+                <h3>Key Responsibilities</h3>
+                <ul>
+                    <li>Maintained and updated project managers' workload planners and project documentation</li>
+                    <li>Processed City of Cape Town Purchase Orders and calculated contractual completion dates</li>
+                    <li>Prepared Purchase Order Alerts and Letters of Appointment for signature</li>
+                    <li>Compared subcontractor quotations against H&I tendered rates and Bills of Quantities to flag profit and loss items</li>
+                    <li>Undertook quantity take-offs for masonry, plasterwork, paintwork, concrete and structural steel using MethVin</li>
+                    <li>Accompanied project managers and quantity surveyors on site inspections and defect assessments</li>
+                </ul>
+
+                <h3>Projects and Sites</h3>
+                <ul>
+                    <li>Philippi East Fresh Produce Market - practical completion inspection meeting</li>
+                    <li>Wallacedene, Kraaifontein - steel-framed structure workmanship inspection</li>
+                    <li>Belroad Fire Station - photographic reporting on completed subcontractor work</li>
+                    <li>Tygerberg Site Camp 2 and H&I Durbanville Head Office</li>
+                </ul>
+
+                <h3>Key Learnings</h3>
+                <ul>
+                    <li>How government term tenders (34Q heritage maintenance, 144Q water and sanitation) are funded and administered</li>
+                    <li>The relationship between tender rates, Bills of Quantities and subcontractor pricing</li>
+                    <li>Practical completion as a contractual milestone, the defects liability period and retention under the JBCC</li>
+                    <li>The importance of accuracy and attention to detail in measurement, costing and document control</li>
+                    <li>That asking questions and seeking feedback is the fastest route to professional competence</li>
+                </ul>
+
+                <h3>Attached Documents</h3>
+                <ul class="documents-list">
+                    <li><a href="CON2013X_HI_Practical_Training_Report.pdf" download>CON3023X H&I Practical Training Report (PDF)</a></li>
+                    <li><a href="HI_Employer_Confirmation_Letter.pdf" download>H&I Employer Confirmation Letter (PDF)</a></li>
+                    <li><a href="CON2013X_HI_Practical_Logbook.xlsx" download>CON3023X Practical Training Logbook (XLSX)</a></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('modal-year3')">Close</button>
             </div>
         </div>
     </div>

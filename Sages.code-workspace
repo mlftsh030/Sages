@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../Downloads/Sage Practicals-20260908T180953Z-1-001"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Sages"
+	}
+}
