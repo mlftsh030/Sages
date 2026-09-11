@@ -1,0 +1,7 @@
+# Raw practical training originals (HEIC, video, large photos).
+# Web-ready conversions live in sage/practicals/ and are committed.
+sage/Sage Practicals/
+
+# OS and Office cruft
+.DS_Store
+~$*
